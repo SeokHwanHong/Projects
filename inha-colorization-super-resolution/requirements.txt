@@ -1,0 +1,9 @@
+torch
+torchvision
+basicsr
+open-clip-torch
+opencv-python
+numpy
+pandas
+Pillow
+tqdm
