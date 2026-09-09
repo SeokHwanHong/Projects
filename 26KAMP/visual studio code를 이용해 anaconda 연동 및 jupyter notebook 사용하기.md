@@ -14,7 +14,7 @@ permalink: /26KAMP/vs code로 anaconda 연동하기.md
 
 <p align="center">
   <a href="#">
-    <img src="/images/vscode/figure1_1.png" />
+    <img src="/images/vscode/figure1_1.png" style="width: min(100%, 860px); height: auto;" />
   </a>
   <br>
 </p>
@@ -25,7 +25,7 @@ conda create -n {가상환경 이름} python={버전} -y (개인적으로는 3.1
 
 <p align="center">
   <a href="#">
-    <img src="/images/vscode/figure1_2.png"/>
+    <img src="/images/vscode/figure1_2.png" style="width: min(100%, 860px); height: auto;" />
   </a>
   <br>
 </p>
@@ -37,13 +37,13 @@ conda activate {가상환경이름}
 
 <p align="center">
   <a href="#">
-    <img src="/images/vscode/figure1_3.png"/>
+    <img src="/images/vscode/figure1_3.png" style="width: min(100%, 860px); height: auto;" />
   </a>
   <br>
 </p>
 <p align="center">
   <a href="#">
-    <img src="/images/vscode/figure1_4.png"/>
+    <img src="/images/vscode/figure1_4.png" style="width: min(100%, 860px); height: auto;" />
   </a>
   <br>
 </p>
@@ -54,7 +54,7 @@ pip install ipykernel
 
 <p align="center">
   <a href="#">
-    <img src="/images/vscode/figure1_5.png" >
+    <img src="/images/vscode/figure1_5.png" style="width: min(100%, 860px); height: auto;" />
   </a>
   <br>
 </p>
@@ -65,7 +65,7 @@ $python -m ipykernel install --user --name {가상환경 이름} --display-name 
 
 <p align="center">
   <a href="#">
-    <img src="/images/vscode/figure1_6.png"/>
+    <img src="/images/vscode/figure1_6.png" style="width: min(100%, 860px); height: auto;" />
   </a>
   <br>
 </p>
@@ -76,7 +76,7 @@ conda deactivate
 
 <p align="center">
   <a href="#">
-    <img src="/images/vscode/figure1_7.png"/>
+    <img src="/images/vscode/figure1_7.png" style="width: min(100%, 860px); height: auto;" />
   </a>
   <br>
 </p>
@@ -86,7 +86,7 @@ conda deactivate
 ## 2.1. visual studio code extension에서 python 검색 -> python extenstion pack 설치
 <p align="center">
   <a href="#">
-    <img src="/images/vscode/figure2_1.png"/>
+    <img src="/images/vscode/figure2_1.png" style="width: min(100%, 960px); height: auto;" />
   </a>
   <br>
 </p>
@@ -97,7 +97,7 @@ conda deactivate
 반대로 jupyter notebook이 실행된 상태에서는 프롬프트 상에서 가상환경 접속 불가능
 <p align="center">
   <a href="#">
-    <img src="/images/vscode/figure2_2.png"/>
+    <img src="/images/vscode/figure2_2.png" style="width: min(100%, 860px); height: auto;" />
   </a>
   <br>
 </p>
@@ -108,7 +108,7 @@ vs code의 아이콘을 눌러 .ipynb 파일 생성
 
 <p align="center">
   <a href="#">
-    <img src="/images/vscode/figure2_3.png"/>
+    <img src="/images/vscode/figure2_3.png" style="width: min(100%, 620px); height: auto;" />
   </a>
   <br>
 </p>
@@ -118,7 +118,7 @@ vs code의 아이콘을 눌러 .ipynb 파일 생성
 화면 우상단의 커널을 눌러 기존에 만든 가상환경 선택
 <p align="center">
   <a href="#">
-    <img src="/images/vscode/figure2_4.png"/>
+    <img src="/images/vscode/figure2_4.png" style="width: min(100%, 760px); height: auto;" />
   </a>
   <br>
 </p>
