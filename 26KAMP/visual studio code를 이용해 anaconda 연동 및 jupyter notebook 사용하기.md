@@ -2,11 +2,11 @@
 layout: single
 title: "visual studio code를 이용해 anaconda 연동 및 jupyter notebook 사용하기"
 categories:
-  - "Programming"
+  - "26KAMP"
 author_profile: true
 toc: true
 toc_sticky: true
-permalink: /2026 KAMP/vs code로 anaconda 연동하기.md
+permalink: /26KAMP/vs code로 anaconda 연동하기.md
 ---
 
 # 1. 가상환경 설정
