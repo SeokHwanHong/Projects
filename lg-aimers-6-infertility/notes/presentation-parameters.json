@@ -1,0 +1,38 @@
+{
+  "source": "뭉치네밥버거_ppt.pdf, page 7–8",
+  "note": "Presentation values; not established as the run that produced the preserved CatBoost log. Final training code is unavailable.",
+  "CatBoost": {
+    "iterations": 1375,
+    "od_wait": 1211,
+    "learning_rate": 0.04327758581699257,
+    "reg_lambda": 49.09396260836614,
+    "random_strength": 41.89925594614459,
+    "depth": 9,
+    "min_data_in_leaf": 28,
+    "leaf_estimation_iterations": 1,
+    "bagging_temperature": 0.022029436061740598,
+    "colsample_bylevel": 0.5405765517905377,
+    "scale_pos_weight": 3,
+    "eval_metric": "AUC",
+    "verbose": 100,
+    "custom_metric": "AUC"
+  },
+  "LightGBM": {
+    "num_leaves": 14,
+    "max_depth": 5,
+    "learning_rate": 0.0474786779581611,
+    "n_estimators": 300,
+    "class_weight": "balanced",
+    "min_child_samples": 50,
+    "subsample": 0.9522278487928603,
+    "colsample_bytree": 0.8084155876319679,
+    "reg_alpha": 0.882902124107087,
+    "reg_lambda": 8.479301899218871,
+    "metric": "auc",
+    "objective": "binary"
+  },
+  "AutoGluon": {
+    "num_trials": 5
+  },
+  "ensemble": "Equal-weight arithmetic mean of three probability predictions"
+}
