@@ -1,0 +1,30 @@
+{
+  "train_shape": [
+    256351,
+    69
+  ],
+  "test_rows": 90067,
+  "processed_shape": [
+    256351,
+    111
+  ],
+  "target_counts": {
+    "0": 190123,
+    "1": 66228
+  },
+  "positive_rate": 0.2583489044318142,
+  "best_logged_validation": {
+    "iter": 397.0,
+    "AUC": 0.7237084142,
+    "Logloss": 0.51303924
+  },
+  "last_logged_validation": {
+    "iter": 407.0,
+    "AUC": 0.7236503072,
+    "Logloss": 0.5124948712
+  },
+  "logged_rows": 408,
+  "ensemble_max_abs_difference": 2.220446049250313e-16,
+  "submission_ids_match": true,
+  "note": "Aggregate checks of supplied artifacts; not a retraining or leaderboard score."
+}
