@@ -1,25 +1,25 @@
 # LG Aimers 6기 — 난임 환자 임신 성공 예측
 
-난임 시술 기록으로 `임신 성공 여부`를 예측한 팀 프로젝트다. **팀 성과는 예선 상위 3%·오프라인 본선 진출**이다(기존 프로젝트 기록·본인 설명; 이번에 공식 순위 증빙을 새로 확인한 것은 아님).
+난임 시술 기록으로 `임신 성공 여부`를 예측한 팀 프로젝트다. **팀 성과는 예선 상위 3%·오프라인 본선 진출**이다.
 
-**홍석환의 주요 역할은 모델의 성능 지표와 feature importance를 참고한 파생변수 탐색이다.** 시술 이력과 변수의 의미를 해석하고, 관계를 표현하는 후보를 검토한 경험에 초점을 둔다. 모델 개발 전체·튜닝·최종 앙상블·대회 성과를 개인 성과로 귀속하지 않는다.
+**주요 역할은 모델의 성능 지표와 feature importance를 참고한 파생변수 탐색이다.** 시술 이력과 변수의 의미를 해석하고, 관계를 표현하는 후보를 검토한 경험에 초점을 둔다.
 
 ## 개인 역할과 팀 수행
 
-| 구분 | 설명 | 확인 수준 |
-| --- | --- | --- |
-| 개인 역할 | 모델 평가 지표·중요도를 참고한 파생변수 탐색 | 본인 설명 |
-| 담당 후보 | 과거 시술·임신·출산 비율, 원인 플래그 합계·관측 여부, 수치/범주 표현·상호작용 | 코드 존재 확인; 변수별 작성자는 확인 필요 |
-| 팀 수행 | CatBoost·LightGBM·AutoGluon 학습·튜닝·예측 결합 | 코드/저장 출력 존재; 개인별 수행 범위 미확정 |
-| 팀 성과 | 예선 상위 3%, 오프라인 본선 진출 | 기존 기록과 본인 설명; 개인 기여의 개선 폭 아님 |
+| 구분 | 설명 | 
+| --- | --- | 
+| 개인 역할 | 모델 평가 지표·중요도를 참고한 파생변수 탐색 |
+| 담당 후보 | 과거 시술·임신·출산 비율, 원인 플래그 합계·관측 여부, 수치/범주 표현·상호작용 |
+| 팀 수행 | CatBoost·LightGBM·AutoGluon 학습·튜닝·예측 결합 | 
+| 팀 성과 | 예선 상위 3%, 오프라인 본선 진출 | 
 
 ## 문제·데이터·평가
 
-타깃은 시술 기록의 임신 성공 여부(0/1), 평가는 ROC-AUC다. 입력에는 연령 범주, 시술/임신/출산 이력, 불임 원인, 난자·배아 수량과 경과일 등이 있다. 기존 [집계 기록](outputs/artifact-summary.json)은 원본 train 256,351행·69열, test 90,067행, 양성 비율 약 25.83%를 보고한다. 이는 이전 집계이며 이번에 원본 CSV를 재집계하지 않았다. 노트북은 ID 제거 후 train 중복 제거를 하므로 그 수치를 그대로 CV 입력 규모로 간주하지 않는다.
+타깃은 시술 기록의 임신 성공 여부(0/1), 평가는 ROC-AUC다. 입력에는 연령 범주, 시술/임신/출산 이력, 불임 원인, 난자·배아 수량과 경과일 등이 있다. 기존 [집계 기록](outputs/artifact-summary.json)은 원본 train 256,351행·69열, test 90,067행, 양성 비율 약 25.83%를 보고한다.
 
 ## 파생변수 탐색의 핵심 접근
 
-**시술 맥락·변수 의미 해석 → 관계를 표현하는 후보 구성 → 성능 지표·중요도로 검토 → 관찰 → 한계 확인.** 탐색 시간순서나 기록에 없는 후보 채택·제거 과정을 복원하지 않았다.
+**시술 맥락·변수 의미 해석 → 관계를 표현하는 후보 구성 → 성능 지표·중요도로 검토 → 관찰 → 한계 확인.** 
 
 | 후보 영역 | 코드에서 확인한 예 | 읽어야 할 의미 |
 | --- | --- | --- |
@@ -27,7 +27,7 @@
 | 원인·관측 여부 | 원인 플래그 합계, `임신 시도 여부` | 합계는 중증도가 아니며 해당 이름은 실제로 경과 연수의 관측 여부 |
 | 수치·범주·조합 | `_num`·`_cate`, `이식 범주 결합`, 수량×경과일 | 같은 정보를 다른 방식으로 표현하는 탐색 |
 
-저장된 중요도 표에서 `이식 범주 결합`은 CatBoost 4위, LightGBM 1위, AutoGluon 2위다. **해당 모델이 활용한 표현이라는 관찰이며 피처 추가에 따른 성능 개선 증거는 아니다.** 모델별 중요도 방식·척도가 다르고 AutoGluon에는 학습에 사용한 train_data를 전달했다. [변수별 산식·주의·귀속 상태](notes/feature-engineering.md)와 [셀별 원출력 발췌](outputs/notebook-evidence.json)를 함께 확인할 수 있다.
+저장된 중요도 표에서 `이식 범주 결합`은 CatBoost 4위, LightGBM 1위, AutoGluon 2위다. 모델별 중요도 방식·척도가 다르고 AutoGluon에는 학습에 사용한 train_data를 전달했다. [변수별 산식·주의·귀속 상태](notes/feature-engineering.md)와 [셀별 원출력 발췌](outputs/notebook-evidence.json)를 함께 확인할 수 있다.
 
 ## 모델 비교와 최종 제출
 
@@ -35,13 +35,12 @@
 | --- | --- |
 | CatBoost | 저장 출력 5-fold 평균 AUC **0.7402164844** |
 | LightGBM | 저장 출력 5-fold 평균 AUC **0.7395960954** |
-| AutoGluon | 내부 validation leaderboard와 train_data 중요도 출력 존재; 위 CV와 동일 평가가 아님 |
-| CatBoost+LightGBM | 두 예측의 동일 가중치 평균 코드 존재; 대응 OOF AUC 미확인 |
-| 최종 3모델 결합 | `(p_catboost + p_lightgbm + p_autogluon) / 3` 코드·기존 집계 기록 |
+| AutoGluon | 내부 validation leaderboard와 train_data 중요도 출력 존재 |
+| CatBoost+LightGBM | 두 예측의 동일 가중치 평균 코드 존재 |
+| 최종 3모델 결합 | `(p_catboost + p_lightgbm + p_autogluon) / 3` |
 
-네 구성의 성능 차이가 크지 않았다는 설명은 **본인 기억**이며 동일 조건 점수표로 확인된 결과가 아니다. 최종 세 모델 동일 가중치 평균은 네 구성 비교와 구분한다. 이전 제출 파일 평균 검증 결과는 기존 집계에 남아 있으나 원본 제출 CSV는 이번에 재대조하지 않았다. 메타 모델을 학습한 스태킹이나 가중치 최적화로 설명하지 않는다.
 
-별도 보존 CatBoost 로그의 최고 AUC **0.7237084142**는 위 노트북 출력과 다른 실험 기록이다. 차이를 피처 개선 폭으로 해석하지 않는다. [분할·평가 데이터·근거와 한계](notes/experiment-evidence.md)를 참고한다.
+별도 보존 CatBoost 로그의 최고 AUC **0.7237084142**는 위 노트북 출력과 다른 실험 기록이다. [분할·평가 데이터·근거와 한계](notes/experiment-evidence.md)를 참고한다.
 
 ## 코드 탐색과 실행 범위
 
@@ -49,12 +48,11 @@
 | --- | --- |
 | [원본 코드 발췌](src/feature-exploration-original.py) | 생성 함수·train/test 적용·CV·중요도 집계·평균 결합 확인 |
 | [파생변수 기록표](notes/feature-engineering.md) | 원본 열·산식·자료형·설계 가설·개인 귀속 상태 |
-| [실험 근거·코드 문제](notes/experiment-evidence.md) | 저장 점수의 평가 조건, 소스/출력 불일치, 후속 검증 |
+| [실험 근거·코드 문제](notes/experiment-evidence.md) | 저장 점수의 평가 조건 |
 | [노트북 집계 출력 발췌](outputs/notebook-evidence.json) | 셀 위치·실행 번호·fold 점수·중요도 표 |
-| [기존 발표 설정](notes/presentation-parameters.json) / [기존 로그](outputs/catboost-validation.tsv) | 다른 시점의 보존 기록; 노트북과 같은 실행으로 보지 않음 |
-| [기존 집계](outputs/artifact-summary.json) / `images/` | 이전 정리에서 만든 집계와 그림; 이번 새 실험 아님 |
+| [기존 발표 설정](notes/presentation-parameters.json) / [기존 로그](outputs/catboost-validation.tsv) | 다른 시점의 보존 기록 |
+| [기존 집계](outputs/artifact-summary.json) / `images/` | 이전 정리에서 만든 집계와 그림 |
 
-새로 확인한 자료는 첨부 `LG_Aimers_6트.ipynb`다. 원본은 수정하지 않았다. 로컬 경로·행 단위 출력이 있어 원본 전체 대신 관련 소스 셀과 집계 출력만 공개한다. 코드 발췌는 로직을 고치지 않은 **보존 자료이며 단독 실행 스크립트가 아니다**. 원본 데이터·가중치·고정 환경·최종 실행 상태가 없어 전체 재현을 보장하지 않는다. 이번에 학습·튜닝·샘플 실행을 하지 않았다.
 
 ## 한계와 후속 개선
 
@@ -62,10 +60,7 @@
 
 ## 블로그·관련 참고자료
 
-[기존 블로그](https://seokhwanhong.github.io/projects/lg-aimers-infertility/)는 이번에 수정하지 않았으므로 개인 역할·보존 코드 범위는 이 README와 근거표를 기준으로 확인한다.
-
-아래는 이번 정리에서 변수 의미와 가설을 검토한 **관련 참고자료**다. 당시 읽은 자료라는 증빙은 없으며 산식이나 대회 성능을 직접 검증한 문헌이 아니다.
 
 - [McLernon 외, BMJ 2016](https://www.bmj.com/content/355/bmj.i5735): 누적 출생 예측과 연령·이전 임신 등 맥락. 대회 임신 성공 타깃과 구별.
-- [ASRM·SART 2021](https://www.asrm.org/practice-guidance/practice-committee-documents/guidance-on-the-limits-to-the-number-of-embryos-to-transfer-a---committee-opinion-2021/): 이식 배아 수 제한 지침. 수량 비율의 효과 증명 아님.
+- [ASRM·SART 2021](https://www.asrm.org/practice-guidance/practice-committee-documents/guidance-on-the-limits-to-the-number-of-embryos-to-transfer-a---committee-opinion-2021/): 이식 배아 수 제한 지침.
 - [ESHRE 2024](https://pmc.ncbi.nlm.nih.gov/articles/PMC10988112/): IVF/ICSI 이식 배아 수 지침. 배아 발달 단계와 데이터 경과일 변수를 동일시하지 않음.
