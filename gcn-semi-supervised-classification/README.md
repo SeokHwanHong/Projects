@@ -39,8 +39,6 @@ GCN 논문의 전파 규칙을 이해하고 실제 그래프에 적용하는 것
 | --- | ---: | ---: |
 | Epoch 300 | 0.6130 | 0.6815 |
 
-
-
 ## 결과의 한계와 후속 비교
 
 기준 모델과 비교하지 않아 **GCN의 추가 집계가 같은 특징을 사용하는 단순 모델보다 도움이 되는지 판단하기 어렵습니다.** 전체 정확도만으로 어느 카테고리에서 예측이 어려운지도 충분히 설명하지 못했습니다.
@@ -51,15 +49,12 @@ GCN 논문의 전파 규칙을 이해하고 실제 그래프에 적용하는 것
 
 데이터·가중치·학습 이력 CSV는 이 디렉터리에 포함하지 않습니다. 노트북은 로컬 절대 경로를 참조하므로 `data/`에 파일을 두는 것만으로 실행되지 않습니다. 각 CSV·가중치·로그 경로를 실제 위치에 맞춰야 합니다.
 
-현재 노트북의 import 기준 패키지는 PyTorch, NumPy, pandas, matplotlib, scikit-learn입니다. Python·CUDA·패키지 버전은 고정된 재현 환경으로 제공하지 않습니다. 
-
+현재 노트북의 import 기준 패키지는 PyTorch, NumPy, pandas, matplotlib, scikit-learn입니다. Python·CUDA·패키지 버전은 고정된 재현 환경으로 제공하지 않습니다.
 
 전체 연결을 공유하는 transductive 설정에서 얻은 과거 검증 로그를 제시했습니다. 학습 정확도는 dropout이 적용된 갱신 전 출력, 검증 정확도는 가중치 갱신 후 eval 모드 출력으로 계산합니다. 두 정확도의 차이를 그대로 과적합 여부의 근거로 삼지 않습니다. 테스트 mask는 존재하지만 첨부·공개 노트북에서 테스트 정확도 계산은 확인되지 않습니다.
 
 <details>
 <summary>코드·실험 기록 확인 사항</summary>
-
-### 코드·실험 기록 확인 사항
 
 아래는 프로젝트 결과의 한계와 구분한 기록·구성 점검 사항입니다. 원본 노트북과 저장 출력은 보존했습니다.
 
@@ -72,15 +67,6 @@ GCN 논문의 전파 규칙을 이해하고 실제 그래프에 적용하는 것
 발표자료의 Cora·Citeseer·Pubmed·NELL 비교표는 원논문 결과입니다. 본인의 Facebook 실험과 구분합니다.
 
 </details>
-
-## 참고자료
-
-- [Kipf·Welling, Semi-Supervised Classification with Graph Convolutional Networks](https://arxiv.org/abs/1609.02907): 전파 규칙과 반지도 학습 방식
-- [GEMSEC Facebook 데이터 소개](https://snap.stanford.edu/data/gemsec-Facebook.html): 범주별 네트워크와 제공 규모. 실제 결합 그래프의 노드 수와 구분## 데이터와 실행 범위
-
-데이터·가중치·학습 이력 CSV는 이 디렉터리에 포함하지 않습니다. 노트북은 로컬 절대 경로를 참조하므로 `data/`에 파일을 두는 것만으로 실행되지 않습니다. 각 CSV·가중치·로그 경로를 실제 위치에 맞춰야 합니다.
-
-현재 노트북의 import 기준 패키지는 PyTorch, NumPy, pandas, matplotlib, scikit-learn입니다. Python·CUDA·패키지 버전은 고정된 재현 환경으로 제공하지 않습니다. 이번 정리는 코드와 저장 출력 열람에 근거하며 학습·추론·독립 재현은 수행하지 않았습니다.
 
 ## 참고자료
 
